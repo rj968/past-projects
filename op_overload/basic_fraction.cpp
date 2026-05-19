@@ -2,6 +2,7 @@
 #include <iostream>
 #include <numeric>
 
+
 class Fraction 
 {
 private: 
@@ -21,13 +22,21 @@ public:
         int gcd{ std::gcd(m_numerator, m_denominator) };
         if (gcd)
         {
-            m_numerator/=gcd;m_denominator/=gcd;
+            m_numerator/=gcd; m_denominator/=gcd;
+            // ensure denominator is positive
+            if (m_denominator < 0) {
+                m_numerator = -m_numerator;
+                m_denominator = -m_denominator;
+            }
         }
     }
     
     friend Fraction operator* (const Fraction& x, const Fraction& y);
     friend Fraction operator* (const Fraction& x, int y);
     friend Fraction operator* (int x, const Fraction& y);
+
+    friend bool operator== (const Fraction& a, const Fraction& b);
+    friend bool operator< (const Fraction& a, const Fraction& b);
 
     friend std::ostream& operator<< (std::ostream& out, const Fraction& fraction);
 };
@@ -44,7 +53,38 @@ Fraction operator* (const Fraction& x, int y)
 
 Fraction operator* (int x, const Fraction& y)
 {
-    return Fraction{y * x};
+    return Fraction{y.m_numerator * x, y.m_denominator};
+}
+
+// comparison operators
+bool operator== (const Fraction& a, const Fraction& b)
+{
+    return a.m_numerator == b.m_numerator && a.m_denominator == b.m_denominator;
+}
+
+bool operator!= (const Fraction& a, const Fraction& b)
+{
+    return !(a == b);
+}
+
+bool operator< (const Fraction& a, const Fraction& b)
+{
+    return (static_cast<double>(a.m_numerator) / a.m_denominator) < (static_cast<double>(b.m_numerator) / b.m_denominator);
+}
+
+bool operator> (const Fraction& a, const Fraction& b)
+{
+    return b < a;
+}
+
+bool operator<= (const Fraction& a, const Fraction& b)
+{
+    return !(b < a);
+}
+
+bool operator>= (const Fraction& a, const Fraction& b)
+{
+    return !(a < b);
 }
 
 std::ostream& operator<< (std::ostream& out, const Fraction& fraction)
@@ -70,15 +110,14 @@ std::istream& operator>> (std::istream& in, Fraction& fraction)
 
 int main()
 {
-	Fraction f1{};
-	std::cout << "Enter fraction 1: ";
-	std::cin >> f1;
+	Fraction f1{ 3, 2 };
+	Fraction f2{ 5, 8 };
 
-	Fraction f2{};
-	std::cout << "Enter fraction 2: ";
-	std::cin >> f2;
-
-	std::cout << f1 << " * " << f2 << " is " << f1 * f2 << '\n'; // note: The result of f1 * f2 is an r-value
-
+	std::cout << f1 << ((f1 == f2) ? " == " : " not == ") << f2 << '\n';
+	std::cout << f1 << ((f1 != f2) ? " != " : " not != ") << f2 << '\n';
+	std::cout << f1 << ((f1 < f2)  ? " < "  : " not < " ) << f2 << '\n';
+	std::cout << f1 << ((f1 > f2)  ? " > "  : " not > " ) << f2 << '\n';
+	std::cout << f1 << ((f1 <= f2) ? " <= " : " not <= ") << f2 << '\n';
+	std::cout << f1 << ((f1 >= f2) ? " >= " : " not >= ") << f2 << '\n';
 	return 0;
 }

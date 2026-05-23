@@ -1,0 +1,3 @@
+/home/rishi/code/c++/game/build/CMakeFiles/main.dir
+/home/rishi/code/c++/game/build/CMakeFiles/edit_cache.dir
+/home/rishi/code/c++/game/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/rishi/code/c++/game/build",
+  "command": "/usr/bin/c++  -I/home/rishi/code/c++/game/include -g -std=c++26 -Wall -Wextra -Werror -Wpedantic -o CMakeFiles/main.dir/main.cpp.o -c /home/rishi/code/c++/game/main.cpp",
+  "file": "/home/rishi/code/c++/game/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.o"
+},
+{
+  "directory": "/home/rishi/code/c++/game/build",
+  "command": "/usr/bin/c++  -I/home/rishi/code/c++/game/include -g -std=c++26 -Wall -Wextra -Werror -Wpedantic -o CMakeFiles/main.dir/creature.cpp.o -c /home/rishi/code/c++/game/creature.cpp",
+  "file": "/home/rishi/code/c++/game/creature.cpp",
+  "output": "CMakeFiles/main.dir/creature.cpp.o"
+},
+{
+  "directory": "/home/rishi/code/c++/game/build",
+  "command": "/usr/bin/c++  -I/home/rishi/code/c++/game/include -g -std=c++26 -Wall -Wextra -Werror -Wpedantic -o CMakeFiles/main.dir/player.cpp.o -c /home/rishi/code/c++/game/player.cpp",
+  "file": "/home/rishi/code/c++/game/player.cpp",
+  "output": "CMakeFiles/main.dir/player.cpp.o"
+},
+{
+  "directory": "/home/rishi/code/c++/game/build",
+  "command": "/usr/bin/c++  -I/home/rishi/code/c++/game/include -g -std=c++26 -Wall -Wextra -Werror -Wpedantic -o CMakeFiles/main.dir/monster.cpp.o -c /home/rishi/code/c++/game/monster.cpp",
+  "file": "/home/rishi/code/c++/game/monster.cpp",
+  "output": "CMakeFiles/main.dir/monster.cpp.o"
+}
+]

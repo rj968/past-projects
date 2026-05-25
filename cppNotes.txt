@@ -1,0 +1,25 @@
+1.  the operator= is member only overload because otherwise it will conflict with the built in copy/move rules
+2.  the operator(), operator[] and operator-> are member only as cpp accesses memory from left to right and
+     having those as members allows the left side to be a program defined object and hence not break the meaning
+     of member pointer access(this pointer) or function call
+3.  Rule of Three: if your class need a destructor or a copy constructor or an overloaded operator= 
+     then it probably needs all 3. This is mainly due to dynamic mem allocation and deep vs shallow copying
+4.  DRY: Don't Repeat Yourself
+5.  Rule of Five: if the copy constructor, copy assignment, move constructor, move assignment,
+     or destructor are defined or deleted, then each of those functions should be defined or deleted.
+6.  Non-const l-value references can only bind to non-const l-values.
+     Const l-value references can bind to non-const l-values, const l-values, and r-values.
+     R-value references can only bind to r-values.
+7.  The copy constructor doesn't do any clean up before allocation as it can be only called when the first
+     time the object is created. 
+     While a copy assignement does clean up before allocation to prevent memory leaks.
+     Also you must check for self assinment in copy assignement and not needed in the copy constructor for
+     the same reason.
+8.  The process of building complex objects from simpler ones is called object composition.
+9.  A good rule of thumb is that each class should be built to accomplish a single task. 
+     That task should either be the storage and manipulation of some kind of data, OR the coordination 
+     of its members. Ideally not both.
+10. Implement the simplest relationship type that meets the needs of your program,
+     not what seems right in real-life.
+11. 3 types of container classes in STL: Sequence containers, Associative containers and Container adapters.
+
